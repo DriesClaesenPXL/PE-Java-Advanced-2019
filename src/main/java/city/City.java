@@ -2,7 +2,7 @@ package city;
 
 import common.DistanceFunction;
 
-public class City implements DistanceFunction<City> {
+public class City implements DistanceFunction<City>{
     private String name;
 	private double latitude;
 	private double longitude;

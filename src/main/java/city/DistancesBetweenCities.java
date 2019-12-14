@@ -1,4 +1,7 @@
-package city;
+package main.java.city;
+
+import java.util.NavigableSet;
+import java.util.TreeSet;
 
 public class DistancesBetweenCities {
 
@@ -7,6 +10,20 @@ public class DistancesBetweenCities {
 		City roermond = new City("Roermond", 51.19417, 5.9875);
 		City maastricht = new City("Maastricht", 50.84833, 5.68889);
 		City aken = new City("Aken", 50.77664, 6.08342);
+
+		NavigableSet<City> cities = new TreeSet<>();
+		cities.add(leuven);
+		cities.add(roermond);
+		cities.add(maastricht);
+		cities.add(aken);
+
+		System.out.println(cities);
+
+		City alken = new City("Alken", 50.87609, 5.30767);
+
+		for (City city:cities) {
+			//TODO
+		}
 	}
 
 }

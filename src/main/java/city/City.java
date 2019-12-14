@@ -1,4 +1,4 @@
-package city;
+package main.java.city;
 
 public class City {
 	private String name;

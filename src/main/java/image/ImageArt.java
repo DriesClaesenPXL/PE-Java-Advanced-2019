@@ -1,4 +1,4 @@
-package image;
+package main.java.image;
 
 import java.io.IOException;
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package image;
+package main.java.image;
 
 public class RGBPixel implements PixelToInt {
     private int red;

@@ -1,4 +1,4 @@
-package main.java.image;
+package image;
 
 public interface PixelToInt {
 	int toRGB();

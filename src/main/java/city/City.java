@@ -3,7 +3,7 @@ package city;
 import common.DistanceFunction;
 
 public class City implements DistanceFunction<City> {
-	private String name;
+    private String name;
 	private double latitude;
 	private double longitude;
 
@@ -29,7 +29,6 @@ public class City implements DistanceFunction<City> {
         return dist * 60 * 1.1515 * 1.609344;
     }
 
-
 	/*
 		Source: https://www.geodatasource.com/developers/java
 	    Calculates the distance between 2 points when given latitude and longitude in decimal degrees
@@ -42,4 +41,8 @@ public class City implements DistanceFunction<City> {
 		dist = Math.toDegrees(dist);
 		dist = dist * 60 * 1.1515 * 1.609344;
 	 */
+
+    public String getName() {
+        return name;
+    }
 }

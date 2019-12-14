@@ -1,4 +1,4 @@
-package main.java.city;
+package city;
 
 import java.util.NavigableSet;
 import java.util.TreeSet;

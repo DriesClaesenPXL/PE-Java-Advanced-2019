@@ -2,7 +2,7 @@ package city;
 
 import common.DistanceFunction;
 
-public class City implements DistanceFunction {
+public class City implements DistanceFunction<City> {
 	private String name;
 	private double latitude;
 	private double longitude;
@@ -19,7 +19,7 @@ public class City implements DistanceFunction {
 	}
 
     @Override
-    public double distance(Object other) {
+    public double distance(City other) {
         double radTheta = Math.toRadians(this.longitude - other.longitude);
         double radLatitude = Math.toRadians(this.latitude);
         double radOtherLatitude = Math.toRadians(other.latitude);

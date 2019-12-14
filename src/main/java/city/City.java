@@ -26,7 +26,7 @@ public class City implements DistanceFunction<City> {
         double dist = Math.sin(radLatitude) * Math.sin(radOtherLatitude) + Math.cos(radLatitude) * Math.cos(radOtherLatitude) * Math.cos(radTheta);
         dist = Math.acos(dist);
         dist = Math.toDegrees(dist);
-        dist = dist * 60 * 1.1515 * 1.609344;
+        return dist * 60 * 1.1515 * 1.609344;
     }
 
 

@@ -1,5 +1,5 @@
-package main.java.common;
+package common;
 
 public interface DistanceFunction<T> {
-    public abstract double distance(T value);
+    double distance(T value);
 }

@@ -1,6 +1,8 @@
-package main.java.city;
+package city;
 
-public class City {
+import common.DistanceFunction;
+
+public class City implements DistanceFunction {
 	private String name;
 	private double latitude;
 	private double longitude;
@@ -15,6 +17,18 @@ public class City {
 	public String toString() {
 		return name;
 	}
+
+    @Override
+    public double distance(Object other) {
+        double radTheta = Math.toRadians(this.longitude - other.longitude);
+        double radLatitude = Math.toRadians(this.latitude);
+        double radOtherLatitude = Math.toRadians(other.latitude);
+        double dist = Math.sin(radLatitude) * Math.sin(radOtherLatitude) + Math.cos(radLatitude) * Math.cos(radOtherLatitude) * Math.cos(radTheta);
+        dist = Math.acos(dist);
+        dist = Math.toDegrees(dist);
+        dist = dist * 60 * 1.1515 * 1.609344;
+    }
+
 
 	/*
 		Source: https://www.geodatasource.com/developers/java

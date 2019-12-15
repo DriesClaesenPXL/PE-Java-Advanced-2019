@@ -49,8 +49,8 @@ public class RGBPixel implements PixelToInt {
         return grayImage;
     }
 
-    public static List<List<GrayscalePixel>> sortGrayscale(List<List<GrayscalePixel>> list){
-        List<List<GrayscalePixel>> sortedImage = new ArrayList<>();
+    public static List<GrayscalePixel> sortGrayscale(List<List<GrayscalePixel>> list){
+        /*List<List<GrayscalePixel>> sortedImage = new ArrayList<>();
         for (List<GrayscalePixel> row : list) {
             List<Integer> sortedIntegerRow = new ArrayList<>();
             for (GrayscalePixel pixel : row) {
@@ -65,7 +65,11 @@ public class RGBPixel implements PixelToInt {
                 sortedGrayRow.add(sortedGrayPixel);
             }
             sortedImage.add(sortedGrayRow);
-        }
-        return sortedImage;
+        }*/
+        List<GrayscalePixel> sortedPixels = new ArrayList<>();
+
+        list.forEach(sortedPixels::addAll);
+
+        return sortedPixels;
     }
 }

@@ -30,7 +30,16 @@ public class RGBPixel implements PixelToInt {
         return (pixel.red + pixel.blue + pixel.green)/3;
     }
 
-    //public List<GrayscalePixel> convertToGrayscale(List<List<RGBPixel>> list){
-        //TODO
-    //}
+    public List<GrayscalePixel> convertToGrayscale(List<List<RGBPixel>> list){
+        List<RGBPixel> grayPixelList;
+        List<List<RGBPixel>> returnImage = new List<List<RGBPixel>>();
+        for (List pixelList : list) {
+            grayPixelList = new List<RGBPixel>();
+            for (RGBPixel pixel : pixelList) {
+                grayPixelList.add(getAverage(pixel));
+            }
+            returnImage.add(grayPixelList);
+        }
+        return returnImage;
+    }
 }

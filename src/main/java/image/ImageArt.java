@@ -22,9 +22,8 @@ public class ImageArt {
         RGBPixel lava = new RGBPixel(218, 20, 21);
         List<RGBPixel> faireyColors = Arrays.asList(prussianBlue, lava, desaturatedCyan, peachYellow);
 
-
         //"Can't read input file" -> pad moet fout zijn of zo *shrug*
-        ImageReader.readImage(Paths.get("../../resources/tokio.jpg"));
+        ImageReader.readImage(Paths.get("src/main/resources/tokio.jpg"));
 
     }
 

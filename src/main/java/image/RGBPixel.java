@@ -57,6 +57,7 @@ public class RGBPixel implements PixelToInt {
                 sortedIntegerRow.add(pixel.getGreyscale());
             }
             Collections.sort(sortedIntegerRow);
+            Collections.reverse(sortedIntegerRow);
 
             List<GrayscalePixel> sortedGrayRow = new ArrayList<>();
             for (Integer sortedInt : sortedIntegerRow) {

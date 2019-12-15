@@ -1,6 +1,11 @@
 package image;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+import static java.util.stream.Collectors.toList;
 
 public class RGBPixel implements PixelToInt {
     private int red;
@@ -30,16 +35,16 @@ public class RGBPixel implements PixelToInt {
         return (pixel.red + pixel.blue + pixel.green)/3;
     }
 
-    public List<GrayscalePixel> convertToGrayscale(List<List<RGBPixel>> list){
-        List<RGBPixel> grayPixelList;
-        List<List<RGBPixel>> returnImage = new List<List<RGBPixel>>();
-        for (List pixelList : list) {
-            grayPixelList = new List<RGBPixel>();
-            for (RGBPixel pixel : pixelList) {
-                grayPixelList.add(getAverage(pixel));
+    public List<List<GrayscalePixel>> convertToGrayscale(List<List<RGBPixel>> list){
+        List<List<GrayscalePixel>> grayImage = new ArrayList<>();
+        for (List<RGBPixel> row : list) {
+            List<GrayscalePixel> grayRow = new ArrayList<>();
+            for (RGBPixel pixel : row) {
+                GrayscalePixel grayPixel = new GrayscalePixel(getAverage(pixel));
+                grayRow.add(grayPixel);
             }
-            returnImage.add(grayPixelList);
+            grayImage.add(grayRow);
         }
-        return returnImage;
+        return grayImage;
     }
 }

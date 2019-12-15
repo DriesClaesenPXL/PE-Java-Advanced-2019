@@ -66,10 +66,21 @@ public class RGBPixel implements PixelToInt {
             }
             sortedImage.add(sortedGrayRow);
         }*/
-        List<GrayscalePixel> sortedPixels = new ArrayList<>();
 
-        list.forEach(sortedPixels::addAll);
+        List<GrayscalePixel> pixelList = new ArrayList<>();
+        list.forEach(pixelList::addAll);
 
-        return sortedPixels;
+        List<Integer> sortedIntegers = new ArrayList<>();
+        for (GrayscalePixel pixel : pixelList) {
+            sortedIntegers.add(pixel.getGreyscale());
+        }
+        Collections.sort(sortedIntegers);
+
+        pixelList = new ArrayList<>();
+        for (Integer integer : sortedIntegers) {
+            GrayscalePixel pixel = new GrayscalePixel(integer);
+            pixelList.add(pixel);
+        }
+        return pixelList;
     }
 }

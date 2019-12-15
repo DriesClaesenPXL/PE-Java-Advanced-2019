@@ -31,11 +31,11 @@ public class RGBPixel implements PixelToInt {
         return "(" + red + ", " + green + ", " + blue + ")";
     }
 
-    private int getAverage(RGBPixel pixel){
+    private static int getAverage(RGBPixel pixel){
         return (pixel.red + pixel.blue + pixel.green)/3;
     }
 
-    public List<List<GrayscalePixel>> convertToGrayscale(List<List<RGBPixel>> list){
+    public static List<List<GrayscalePixel>> convertToGrayscale(List<List<RGBPixel>> list){
         List<List<GrayscalePixel>> grayImage = new ArrayList<>();
         for (List<RGBPixel> row : list) {
             List<GrayscalePixel> grayRow = new ArrayList<>();

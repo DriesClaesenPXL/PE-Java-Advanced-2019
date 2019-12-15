@@ -4,13 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeSet;
+import java.util.*;
 
 public class ImageArt {
 
@@ -25,6 +19,8 @@ public class ImageArt {
         //"Can't read input file" -> pad moet fout zijn of zo *shrug*
         ImageReader.readImage(Paths.get("src/main/resources/tokio.jpg"));
 
+        List<List<GrayscalePixel>> grayImage = RGBPixel.convertToGrayscale(Objects.requireNonNull(ImageReader.readImage(Paths.get("src/main/resources/tokio.jpg"))));
+        ImageWriter.writeImage(Paths.get("src/main/resources/grayImage.jpg"), grayImage);
     }
 
     private static Map<GrayscalePixel, RGBPixel> createTranslationMap(List<RGBPixel> faireyColors, TreeSet<GrayscalePixel> allGreyscalePixels) {

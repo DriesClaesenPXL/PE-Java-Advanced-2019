@@ -27,11 +27,7 @@ public class GrayscalePixel implements PixelToInt, DistanceFunction<GrayscalePix
 
     @Override
     public double distance(GrayscalePixel value) {
-        int diff = this.greyscale - value.greyscale;
-        if (diff < 0){
-            diff = diff + (2*diff);
-        }
-        return diff;
+        return Math.abs(this.greyscale - value.greyscale);
     }
 
     @Override

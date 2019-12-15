@@ -10,13 +10,18 @@ public class ImageArt {
 
     public static void main(String[] args) throws IOException {
 
-        RGBPixel prussianBlue = new RGBPixel(0, 48, 80);
-        RGBPixel desaturatedCyan = new RGBPixel(112, 150, 160);
-        RGBPixel peachYellow = new RGBPixel(250, 227, 173);
-        RGBPixel lava = new RGBPixel(218, 20, 21);
+        //cool new colors
+        RGBPixel prussianBlue = new RGBPixel(245, 66, 153);
+        RGBPixel desaturatedCyan = new RGBPixel(245, 66, 200);
+        RGBPixel peachYellow = new RGBPixel(245, 66, 233);
+        RGBPixel lava = new RGBPixel(221, 66, 245);
+        //lame old colors
+        //RGBPixel prussianBlue = new RGBPixel(0, 48, 80);
+        //RGBPixel desaturatedCyan = new RGBPixel(112, 150, 160);
+        //RGBPixel peachYellow = new RGBPixel(250, 227, 173);
+        //RGBPixel lava = new RGBPixel(218, 20, 21);
         List<RGBPixel> faireyColors = Arrays.asList(prussianBlue, lava, desaturatedCyan, peachYellow);
 
-        //"Can't read input file" -> pad moet fout zijn of zo *shrug*
         ImageReader.readImage(Paths.get("src/main/resources/tokio.jpg"));
 
         List<List<GrayscalePixel>> grayImage = RGBPixel.convertToGrayscale(Objects.requireNonNull(ImageReader.readImage(Paths.get("src/main/resources/tokio.jpg"))));

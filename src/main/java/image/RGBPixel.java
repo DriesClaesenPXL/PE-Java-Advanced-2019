@@ -43,7 +43,7 @@ public class RGBPixel implements PixelToInt {
             for (RGBPixel pixel : row) {
                 GrayscalePixel grayPixel = new GrayscalePixel(getAverage(pixel));
                 int greyScale = grayPixel.getGreyscale();
-                if(greyScale >= 0 && greyScale < 64) {
+                /*if(greyScale >= 0 && greyScale < 64) {
                     grayPixel = new GrayscalePixel(32);
                 } else if (greyScale >= 64 && greyScale < 128) {
                     grayPixel = new GrayscalePixel(96);
@@ -51,7 +51,7 @@ public class RGBPixel implements PixelToInt {
                     grayPixel = new GrayscalePixel(160);
                 } else {
                     grayPixel = new GrayscalePixel(224);
-                }
+                }*/
                 grayRow.add(grayPixel);
             }
             grayImage.add(grayRow);
@@ -59,7 +59,7 @@ public class RGBPixel implements PixelToInt {
         return grayImage;
     }
 
-    public static List<GrayscalePixel> sortGrayscale(List<List<GrayscalePixel>> list){
+    public static List<GrayscalePixel> sortGrayscale(List<GrayscalePixel> list){
         /*List<List<GrayscalePixel>> sortedImage = new ArrayList<>();
         for (List<GrayscalePixel> row : list) {
             List<Integer> sortedIntegerRow = new ArrayList<>();
@@ -77,16 +77,13 @@ public class RGBPixel implements PixelToInt {
             sortedImage.add(sortedGrayRow);
         }*/
 
-        List<GrayscalePixel> pixelList = new ArrayList<>();
-        list.forEach(pixelList::addAll);
-
         List<Integer> sortedIntegers = new ArrayList<>();
-        for (GrayscalePixel pixel : pixelList) {
+        for (GrayscalePixel pixel : list) {
             sortedIntegers.add(pixel.getGreyscale());
         }
         Collections.sort(sortedIntegers);
 
-        pixelList = new ArrayList<>();
+        List<GrayscalePixel> pixelList = new ArrayList<>();
         for (Integer integer : sortedIntegers) {
             GrayscalePixel pixel = new GrayscalePixel(integer);
             pixelList.add(pixel);

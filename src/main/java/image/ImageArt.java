@@ -22,15 +22,17 @@ public class ImageArt {
         //RGBPixel lava = new RGBPixel(218, 20, 21);
         List<RGBPixel> faireyColors = Arrays.asList(prussianBlue, lava, desaturatedCyan, peachYellow);
 
-        ImageReader.readImage(Paths.get("src/main/resources/tokio.jpg"));
+        List<List<GrayscalePixel>> grayImage = RGBPixel.convertToGrayscale(ImageReader.readImage(Paths.get("src/main/resources/tokio.jpg")));
 
-        List<List<GrayscalePixel>> grayImage = RGBPixel.convertToGrayscale(Objects.requireNonNull(ImageReader.readImage(Paths.get("src/main/resources/tokio.jpg"))));
-        List<GrayscalePixel> sortedGrayImage = RGBPixel.sortGrayscale(grayImage);
-        TreeSet<GrayscalePixel> grayscalePixels = new TreeSet<>(sortedGrayImage);
+        List<GrayscalePixel> pixelList = new ArrayList<>();
+        grayImage.forEach(pixelList::addAll);
+
+        List<GrayscalePixel> sortedPixelList = RGBPixel.sortGrayscale(pixelList);
+
+        ImageWriter.writeImage(Paths.get("src/main/resources/grayscale.jpg"), grayImage);
+
+        TreeSet<GrayscalePixel> grayscalePixels = new TreeSet<>(sortedPixelList);
         Map map = createTranslationMap(faireyColors, grayscalePixels);
-        ImageWriter.writeImage(Paths.get("src/main/resources/tokio.jpg"), grayImage);
-        //System.out.println(grayscalePixels);
-        //ImageWriter.writeImage(Paths.get("src/main/resources/grayImage.jpg"), sortedGrayImage);
     }
 
     private static Map<GrayscalePixel, RGBPixel> createTranslationMap(List<RGBPixel> faireyColors, TreeSet<GrayscalePixel> allGreyscalePixels) {

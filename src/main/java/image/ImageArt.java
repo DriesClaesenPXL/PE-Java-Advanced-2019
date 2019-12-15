@@ -10,16 +10,10 @@ public class ImageArt {
 
     public static void main(String[] args) throws IOException {
 
-        //cool new colors
-        RGBPixel prussianBlue = new RGBPixel(245, 66, 153);
-        RGBPixel desaturatedCyan = new RGBPixel(245, 66, 200);
-        RGBPixel peachYellow = new RGBPixel(245, 66, 233);
-        RGBPixel lava = new RGBPixel(221, 66, 245);
-        //lame old colors
-        /*RGBPixel prussianBlue = new RGBPixel(0, 48, 80);
+        RGBPixel prussianBlue = new RGBPixel(0, 48, 80);
         RGBPixel desaturatedCyan = new RGBPixel(112, 150, 160);
         RGBPixel peachYellow = new RGBPixel(250, 227, 173);
-        RGBPixel lava = new RGBPixel(218, 20, 21);*/
+        RGBPixel lava = new RGBPixel(218, 20, 21);
         List<RGBPixel> faireyColors = Arrays.asList(prussianBlue, lava, desaturatedCyan, peachYellow);
 
         List<List<GrayscalePixel>> grayImage = RGBPixel.convertToGrayscale(ImageReader.readImage(Paths.get("src/main/resources/tokio.jpg")));
@@ -33,17 +27,10 @@ public class ImageArt {
 
         TreeSet<GrayscalePixel> grayscalePixels = new TreeSet<>(sortedPixelList);
 
-        Map <GrayscalePixel, RGBPixel> testMap = new HashMap<>();
-        GrayscalePixel testPixel1 = new GrayscalePixel(32);
-        GrayscalePixel testPixel3 = new GrayscalePixel(32);
-        RGBPixel testPixel2 = new RGBPixel(15,15,15);
-        testMap.put(testPixel1, testPixel2);
-
-
-        //Map map = createTranslationMap(faireyColors, grayscalePixels);
-        System.out.println(testMap);
-        System.out.println(testMap.get(testPixel3));
-        //ImageWriter.writeImage(Paths.get("src/main/resources/simpleGrayscale.jpg"), ConvertToSimpleGrayscale(grayImage, map));
+        Map map = createTranslationMap(faireyColors, grayscalePixels);
+        System.out.println(map);
+        System.out.println();
+        ImageWriter.writeImage(Paths.get("src/main/resources/fairey.jpg"), ConvertToFairey(grayImage, sortedPixelList));
 
     }
 
@@ -70,30 +57,35 @@ public class ImageArt {
         return translationMap;
     }
 
-    private static List<List<GrayscalePixel>> ConvertToSimpleGrayscale (List<List<GrayscalePixel>> grayscaleImage, Map map) {
-        List<List<GrayscalePixel>> grayImage = new ArrayList<>();
+    private static List<List<RGBPixel>> ConvertToFairey (List<List<GrayscalePixel>> grayscaleImage, List<GrayscalePixel> sortedPixelList) {
+        List<List<RGBPixel>> grayImage = new ArrayList<>();
         for (List<GrayscalePixel> row : grayscaleImage) {
-            List<GrayscalePixel> grayRow = new ArrayList<>();
+            List<RGBPixel> grayRow = new ArrayList<>();
+            RGBPixel colorPixel = new RGBPixel(0,0,0);
             for (GrayscalePixel pixel : row) {
                 int greyScale = pixel.getGreyscale();
                 if(greyScale >= 0 && greyScale < 64) {
 
-                    pixel = new GrayscalePixel(32);
+                    //pixel = new GrayscalePixel(32);
+                    colorPixel = new RGBPixel(0, 48, 80);
 
                 } else if (greyScale >= 64 && greyScale < 128) {
 
-                    pixel = new GrayscalePixel(96);
+                    //pixel = new GrayscalePixel(96);
+                    colorPixel = new RGBPixel(218, 20, 21);
 
                 } else if (greyScale >= 128 && greyScale < 192) {
 
-                    pixel = new GrayscalePixel(160);
+                    //pixel = new GrayscalePixel(160);
+                    colorPixel = new RGBPixel(112, 150, 160);
 
                 } else {
 
-                    pixel = new GrayscalePixel(224);
+                    //pixel = new GrayscalePixel(224);
+                    colorPixel = new RGBPixel(250, 227, 173);
 
                 }
-                grayRow.add(pixel);
+                grayRow.add(colorPixel);
             }
             grayImage.add(grayRow);
         }

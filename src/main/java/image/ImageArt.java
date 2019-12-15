@@ -26,8 +26,10 @@ public class ImageArt {
 
         List<List<GrayscalePixel>> grayImage = RGBPixel.convertToGrayscale(Objects.requireNonNull(ImageReader.readImage(Paths.get("src/main/resources/tokio.jpg"))));
         List<GrayscalePixel> sortedGrayImage = RGBPixel.sortGrayscale(grayImage);
-        Set<GrayscalePixel> grayscalePixels = new TreeSet<>(sortedGrayImage);
-        System.out.println(grayscalePixels);
+        TreeSet<GrayscalePixel> grayscalePixels = new TreeSet<>(sortedGrayImage);
+        Map map = createTranslationMap(faireyColors, grayscalePixels);
+        ImageWriter.writeImage(Paths.get("src/main/resources/tokio.jpg"), grayImage);
+        //System.out.println(grayscalePixels);
         //ImageWriter.writeImage(Paths.get("src/main/resources/grayImage.jpg"), sortedGrayImage);
     }
 

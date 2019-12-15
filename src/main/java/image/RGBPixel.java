@@ -42,6 +42,16 @@ public class RGBPixel implements PixelToInt {
             List<GrayscalePixel> grayRow = new ArrayList<>();
             for (RGBPixel pixel : row) {
                 GrayscalePixel grayPixel = new GrayscalePixel(getAverage(pixel));
+                int greyScale = grayPixel.getGreyscale();
+                if(greyScale >= 0 && greyScale < 64) {
+                    grayPixel = new GrayscalePixel(32);
+                } else if (greyScale >= 64 && greyScale < 128) {
+                    grayPixel = new GrayscalePixel(96);
+                } else if (greyScale >= 128 && greyScale < 192) {
+                    grayPixel = new GrayscalePixel(160);
+                } else {
+                    grayPixel = new GrayscalePixel(224);
+                }
                 grayRow.add(grayPixel);
             }
             grayImage.add(grayRow);

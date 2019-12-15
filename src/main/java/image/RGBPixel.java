@@ -43,15 +43,6 @@ public class RGBPixel implements PixelToInt {
             for (RGBPixel pixel : row) {
                 GrayscalePixel grayPixel = new GrayscalePixel(getAverage(pixel));
                 int greyScale = grayPixel.getGreyscale();
-                /*if(greyScale >= 0 && greyScale < 64) {
-                    grayPixel = new GrayscalePixel(32);
-                } else if (greyScale >= 64 && greyScale < 128) {
-                    grayPixel = new GrayscalePixel(96);
-                } else if (greyScale >= 128 && greyScale < 192) {
-                    grayPixel = new GrayscalePixel(160);
-                } else {
-                    grayPixel = new GrayscalePixel(224);
-                }*/
                 grayRow.add(grayPixel);
             }
             grayImage.add(grayRow);
@@ -60,23 +51,6 @@ public class RGBPixel implements PixelToInt {
     }
 
     public static List<GrayscalePixel> sortGrayscale(List<GrayscalePixel> list){
-        /*List<List<GrayscalePixel>> sortedImage = new ArrayList<>();
-        for (List<GrayscalePixel> row : list) {
-            List<Integer> sortedIntegerRow = new ArrayList<>();
-            for (GrayscalePixel pixel : row) {
-                sortedIntegerRow.add(pixel.getGreyscale());
-            }
-            Collections.sort(sortedIntegerRow);
-            Collections.reverse(sortedIntegerRow);
-
-            List<GrayscalePixel> sortedGrayRow = new ArrayList<>();
-            for (Integer sortedInt : sortedIntegerRow) {
-                GrayscalePixel sortedGrayPixel = new GrayscalePixel(sortedInt);
-                sortedGrayRow.add(sortedGrayPixel);
-            }
-            sortedImage.add(sortedGrayRow);
-        }*/
-
         List<Integer> sortedIntegers = new ArrayList<>();
         for (GrayscalePixel pixel : list) {
             sortedIntegers.add(pixel.getGreyscale());

@@ -1,8 +1,6 @@
 package image;
 
-import java.io.File;
 import java.io.IOException;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
 
@@ -10,27 +8,25 @@ public class ImageArt {
 
     public static void main(String[] args) throws IOException {
 
-        RGBPixel prussianBlue = new RGBPixel(0, 48, 80);
-        RGBPixel desaturatedCyan = new RGBPixel(112, 150, 160);
-        RGBPixel peachYellow = new RGBPixel(250, 227, 173);
-        RGBPixel lava = new RGBPixel(218, 20, 21);
-        List<RGBPixel> faireyColors = Arrays.asList(prussianBlue, lava, desaturatedCyan, peachYellow);
+        RGBPixel sepia1 = new RGBPixel(86, 36, 54);
+        RGBPixel sepia2 = new RGBPixel(107, 73, 21);
+        RGBPixel sepia3 = new RGBPixel(197, 168, 160);
+        RGBPixel sepia4 = new RGBPixel(216, 201, 173);
+        List<RGBPixel> faireyColors = Arrays.asList(sepia1, sepia2, sepia3, sepia4);
 
-        List<List<GrayscalePixel>> grayImage = RGBPixel.convertToGrayscale(ImageReader.readImage(Paths.get("src/main/resources/tokio.jpg")));
+        List<List<GrayscalePixel>> grayImage = RGBPixel.convertToGrayscale(Objects.requireNonNull(ImageReader.readImage(Paths.get("src/main/resources/me.jpg"))));
 
         List<GrayscalePixel> pixelList = new ArrayList<>();
         grayImage.forEach(pixelList::addAll);
 
         List<GrayscalePixel> sortedPixelList = RGBPixel.sortGrayscale(pixelList);
 
-        ImageWriter.writeImage(Paths.get("src/main/resources/grayscale.jpg"), grayImage);
+        ImageWriter.writeImage(Paths.get("src/main/resources/grayscaledMe.jpg"), grayImage);
 
         TreeSet<GrayscalePixel> grayscalePixels = new TreeSet<>(sortedPixelList);
 
         Map map = createTranslationMap(faireyColors, grayscalePixels);
-        System.out.println(map);
-        System.out.println();
-        ImageWriter.writeImage(Paths.get("src/main/resources/fairey.jpg"), ConvertToFairey(grayImage, sortedPixelList));
+        ImageWriter.writeImage(Paths.get("src/main/resources/faireyfiedMe.jpg"), ConvertToFairey(grayImage, sortedPixelList));
 
     }
 
@@ -67,22 +63,22 @@ public class ImageArt {
                 if(greyScale >= 0 && greyScale < 64) {
 
                     //pixel = new GrayscalePixel(32);
-                    colorPixel = new RGBPixel(0, 48, 80);
+                    colorPixel = new RGBPixel(86, 36, 54);
 
                 } else if (greyScale >= 64 && greyScale < 128) {
 
                     //pixel = new GrayscalePixel(96);
-                    colorPixel = new RGBPixel(218, 20, 21);
+                    colorPixel = new RGBPixel(107, 73, 21);
 
                 } else if (greyScale >= 128 && greyScale < 192) {
 
                     //pixel = new GrayscalePixel(160);
-                    colorPixel = new RGBPixel(112, 150, 160);
+                    colorPixel = new RGBPixel(197, 168, 160);
 
                 } else {
 
                     //pixel = new GrayscalePixel(224);
-                    colorPixel = new RGBPixel(250, 227, 173);
+                    colorPixel = new RGBPixel(216, 201, 173);
 
                 }
                 grayRow.add(colorPixel);

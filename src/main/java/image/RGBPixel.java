@@ -1,5 +1,7 @@
 package image;
 
+import java.util.List;
+
 public class RGBPixel implements PixelToInt {
     private int red;
     private int green;
@@ -24,4 +26,11 @@ public class RGBPixel implements PixelToInt {
         return "(" + red + ", " + green + ", " + blue + ")";
     }
 
+    private int getAverage(RGBPixel pixel){
+        return (pixel.red + pixel.blue + pixel.green)/3;
+    }
+
+    //public List<GrayscalePixel> convertToGrayscale(List<List<RGBPixel>> list){
+        //TODO
+    //}
 }

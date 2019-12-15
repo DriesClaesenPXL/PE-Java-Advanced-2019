@@ -1,6 +1,9 @@
 package image;
 
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -19,6 +22,9 @@ public class ImageArt {
         RGBPixel lava = new RGBPixel(218, 20, 21);
         List<RGBPixel> faireyColors = Arrays.asList(prussianBlue, lava, desaturatedCyan, peachYellow);
 
+
+        //"Can't read input file" -> pad moet fout zijn of zo *shrug*
+        ImageReader.readImage(Paths.get("../../resources/tokio.jpg"));
 
     }
 

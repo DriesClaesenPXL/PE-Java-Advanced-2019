@@ -1,6 +1,7 @@
 package image;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -46,5 +47,24 @@ public class RGBPixel implements PixelToInt {
             grayImage.add(grayRow);
         }
         return grayImage;
+    }
+
+    public static List<List<GrayscalePixel>> sortGrayscale(List<List<GrayscalePixel>> list){
+        List<List<GrayscalePixel>> sortedImage = new ArrayList<>();
+        for (List<GrayscalePixel> row : list) {
+            List<Integer> sortedIntegerRow = new ArrayList<>();
+            for (GrayscalePixel pixel : row) {
+                sortedIntegerRow.add(pixel.getGreyscale());
+            }
+            Collections.sort(sortedIntegerRow);
+
+            List<GrayscalePixel> sortedGrayRow = new ArrayList<>();
+            for (Integer sortedInt : sortedIntegerRow) {
+                GrayscalePixel sortedGrayPixel = new GrayscalePixel(sortedInt);
+                sortedGrayRow.add(sortedGrayPixel);
+            }
+            sortedImage.add(sortedGrayRow);
+        }
+        return sortedImage;
     }
 }
